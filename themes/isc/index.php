@@ -3,31 +3,50 @@
 	<div id="container">
 		<div id="content">
 
-			<div class="slider-wraper">
-				<?php if ( function_exists( 'soliloquy' ) ) { soliloquy( 'hello', 'slug' ); } ?>
+			<div class="slider-wraper header-slider">
+				<?php if ( function_exists( 'soliloquy' ) ) { soliloquy( 'principal', 'slug' ); } ?>
 			</div>
 
 			<div class="space"></div>
 
-			<!--
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12">
-						<?php echo do_shortcode('[wpupg-grid id="mi-primer-grid"]'); ?>
-					</div>
-				</div>
-			</div>
-			-->
+			<?php /*
+				<ul>
+				<?php $args = array(
+					//'posts_per_page'   => 5,
+					//'offset'           => 0,
+					//'category'         => '',
+					'category_name'    => 'ultimas-noticias',
+					'orderby'          => 'date',
+					//'order'            => 'DESC',
+					//'include'          => '',
+					//'exclude'          => '',
+					//'meta_key'         => '',
+					//'meta_value'       => '',
+					//'post_type'        => 'post',
+					//'post_mime_type'   => '',
+					//'post_parent'      => '',
+					//'author'	   => '',
+					//'author_name'	   => '',
+					'post_status'      => 'publish',
+					'suppress_filters' => true
+				);
+				$posts_array = get_posts( $args );
+				foreach ( $posts_array as $post ) : setup_postdata( $post ); ?>
+					<li>
+						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 
-			<!--
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12">
-						<?php echo do_shortcode('[embedyt] http://www.youtube.com/embed?listType=playlist&list=PLwsR2V46bN7RarSpiKzjdjGRPtEhZhLXa&v=pKTbvOAVf-Y[/embedyt]'); ?>
-					</div>
-				</div>
-			</div>
-			-->
+						<?php if (has_post_thumbnail( $post->ID ) ): ?>
+						  <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'custom-size' ); ?>
+							<?php var_dump($image) ?>
+						  <img src="<?php echo $image[0]; ?>" alt="" class="img-responsive" height="265" />
+						<?php endif; ?>
+
+
+					</li>
+				<?php endforeach;
+				wp_reset_postdata();?>
+			</ul>
+			*/ ?>
 
 			<div class="container">
 				<div class="row">
@@ -36,8 +55,43 @@
 							<h2>Últimas Noticias!</h2>
 							<p>Nuestra mas reciente información en todo el ISC</p>
 
+							<?php  $args = array(
+								//'posts_per_page'   => 5,
+								//'offset'           => 0,
+								//'category'         => '',
+								'category_name'    => 'ultimas-noticias',
+								'orderby'          => 'date',
+								//'order'            => 'DESC',
+								//'include'          => '',
+								//'exclude'          => '',
+								//'meta_key'         => '',
+								//'meta_value'       => '',
+								//'post_type'        => 'post',
+								//'post_mime_type'   => '',
+								//'post_parent'      => '',
+								//'author'	   => '',
+								//'author_name'	   => '',
+								'post_status'      => 'publish',
+								'suppress_filters' => true
+							);
+							$posts_array = get_posts( $args ); ?>
+							<?php foreach ( $posts_array as $post ) : setup_postdata( $post ); ?>
+							<?php $post_categories = wp_get_post_categories( $post->ID ); ?>
+							<?php $post_categories = wp_get_post_categories( $post->ID ); ?>
+							<?php
+								foreach ($post_categories as $c) {
+										$cat = get_category( $c );
+										if ($cat->slug != 'ultimas-noticias')
+											$cats_buttons[$cat->slug] = array( 'name' => $cat->name, 'slug' => $cat->slug );
+								}
+							 ?>
+							<?php endforeach; wp_reset_postdata(); ?>
+
 							<div id="filters" class="portfolio-filters button-group">
 								<button class="btn btn-default is-checked" data-filter="*">show all</button>
+								<?php foreach ($cats_buttons as $cat): ?>
+									<button class="btn btn-default is-checked" data-filter=".<?php echo $cat['slug']; ?>"><?php echo $cat['name']; ?></button>
+								<?php endforeach; ?>
 								<button class="btn btn-default" data-filter=".metal">metal</button>
 								<button class="btn btn-default" data-filter=".transition">transition</button>
 								<button class="btn btn-default" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
@@ -47,19 +101,33 @@
 								<button class="btn btn-default" data-filter="ium">name ends with &ndash;ium</button>
 							</div>
 
-							<?php /*
-							<h2>Sort</h2>
-							<div id="sorts" class="button-group">  <button class="button is-checked" data-sort-by="original-order">original order</button>
-								<button class="button" data-sort-by="name">name</button>
-								<button class="button" data-sort-by="symbol">symbol</button>
-								<button class="button" data-sort-by="number">number</button>
-								<button class="button" data-sort-by="weight">weight</button>
-								<button class="button" data-sort-by="category">category</button>
-							</div>
-							*/ ?>
+
 							<div class="section-content"></div>
 							<div class="grid">
 								<div class="grid-sizer"></div>
+								<?php foreach ( $posts_array as $post ) : setup_postdata( $post ); ?>
+								<?php $post_categories = wp_get_post_categories( $post->ID ); ?>
+								<?php
+									foreach ($post_categories as $c) {
+											$cat = get_category( $c );
+											if ($cat->slug != 'ultimas-noticias')
+												$cats[] = array( 'name' => $cat->name, 'slug' => $cat->slug );
+									}
+								 ?>
+								<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'custom-size' ); ?>
+								<div class="element-item transition <?php foreach ($cats as $cat): ?><?php echo $cat['slug']; ?> <?php endforeach; ?>" data-category="transition">
+									<img src="<?php echo $image[0]; ?>" alt="" class="img-responsive" height="265"/>
+									<a href="<?php the_permalink(); ?>" class="element-item-container">
+										<h3 class="name"><span><?php the_title(); ?></span></h3>
+										<p class="symbol">
+											<?php foreach ($cats as $cat): ?>
+												<?php echo $cat['name']; ?>
+											<?php endforeach; ?>
+										</p>
+									</a>
+								</div>
+								<?php endforeach; wp_reset_postdata(); ?>
+
 								<div class="element-item transition metal " data-category="transition">
 									<h3 class="name">Mercury</h3>
 									<p class="symbol">Hg</p>
@@ -156,7 +224,6 @@
 									<p class="number">7</p>
 									<p class="weight">14.007</p>
 								</div>
-								<!--
 								<div class="element-item actinoid metal inner-transition " data-category="actinoid">
 									<h3 class="name">Uranium</h3>
 									<p class="symbol">U</p>
@@ -169,7 +236,6 @@
 									<p class="number">94</p>
 									<p class="weight">(244)</p>
 								</div>
-								-->
 							</div>
 						</div>
 					</div>

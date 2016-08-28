@@ -447,6 +447,18 @@ function widget_sandbox_rsslinks_control() {
 <?php
 }
 
+
+function twentyfifteen_setup() {
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails', array( 'post' ) );          // Posts only
+	add_theme_support( 'post-thumbnails', array( 'page' ) );          // Pages only
+	add_theme_support( 'post-thumbnails', array( 'post', 'movie' ) ); // Posts and Movies
+	add_image_size( 'custom-size', 265, 265, true ); 
+
+}
+
+add_action( 'after_setup_theme', 'twentyfifteen_setup' );
+
 // Widgets plugin: intializes the plugin after the widgets above have passed snuff
 function sandbox_widgets_init() {
 	if ( !function_exists('register_sidebars') )
@@ -495,6 +507,7 @@ load_theme_textdomain('sandbox');
 
 // Runs our code at the end to check that everything needed has loaded
 add_action( 'init', 'sandbox_widgets_init' );
+
 
 // Registers our function to filter default gallery shortcode
 add_filter( 'post_gallery', 'sandbox_gallery', $attr );

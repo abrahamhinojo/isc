@@ -42,8 +42,8 @@
 </div><!-- #wrapper .hfeed -->
 
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/node_modules/foundation-sites/vendor/jquery/dist/jquery.min.js"></script>
-<?php /* <script type="text/javascript" src="<?php bloginfo('template_url') ?>/node_modules/foundation-sites/dist/foundation.min.js"></script> */ ?>
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url') ?>/node_modules/jquery-lazyload/jquery.lazyload.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/isotope/isotope.pkgd.min.js"></script>
 
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/fancybox-master/lib/jquery.mousewheel.pack.js?v=3.1.3"></script>
@@ -53,27 +53,35 @@
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/fancybox-master/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 
 <script type="text/javascript">
-$(document).ready(function() {
-	$('.fancybox-media')
-		.attr('rel', 'media-gallery')
-		.fancybox({
-			openEffect : 'elastic',
-			closeEffect : 'elastic',
-			prevEffect : 'elastic',
-			nextEffect : 'elastic',
+	$(document).ready(function() {
+		$('.fancybox-media')
+			.attr('rel', 'media-gallery')
+			.fancybox({
+				openEffect : 'elastic',
+				closeEffect : 'elastic',
+				prevEffect : 'elastic',
+				nextEffect : 'elastic',
 
-			arrows : false,
-			helpers : {
-				media : {},
-				buttons : {}
-			}
+				arrows : false,
+				helpers : {
+					media : {},
+					buttons : {}
+				}
+			});
+	});
+
+	$(function() {
+		$("img.img-responsive").lazyload({
+			effect : "fadeIn"
 		});
-});
-
+	});
 
 	var $grid = $('.grid').isotope({
 		itemSelector: '.element-item',
 		layoutMode: 'fitRows',
+		masonry: {
+			columnWidth: '.grid-sizer'
+		},
 		getSortData: {
 			name: '.name',
 			symbol: '.symbol',
