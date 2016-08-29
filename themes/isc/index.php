@@ -106,8 +106,10 @@
 							<div class="grid">
 								<div class="grid-sizer"></div>
 								<?php foreach ( $posts_array as $post ) : setup_postdata( $post ); ?>
+								<?php $post_categories = false; ?>
 								<?php $post_categories = wp_get_post_categories( $post->ID ); ?>
 								<?php
+								    $cats = [];
 									foreach ($post_categories as $c) {
 											$cat = get_category( $c );
 											if ($cat->slug != 'ultimas-noticias')
@@ -121,7 +123,7 @@
 										<h3 class="name"><span><?php the_title(); ?></span></h3>
 										<p class="symbol">
 											<?php foreach ($cats as $cat): ?>
-												<?php echo $cat['name']; ?>
+												<?php echo $cat['name'] . '<br/>' ?>
 											<?php endforeach; ?>
 										</p>
 									</a>
