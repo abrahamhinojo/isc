@@ -88,10 +88,11 @@
 							<?php endforeach; wp_reset_postdata(); ?>
 
 							<div id="filters" class="portfolio-filters button-group">
-								<button class="btn btn-default is-checked" data-filter="*">show all</button>
+								<button class="btn btn-default is-checked" data-filter="*">Ver todo</button>
 								<?php foreach ($cats_buttons as $cat): ?>
 									<button class="btn btn-default is-checked" data-filter=".<?php echo $cat['slug']; ?>"><?php echo $cat['name']; ?></button>
 								<?php endforeach; ?>
+								<?php /*
 								<button class="btn btn-default" data-filter=".metal">metal</button>
 								<button class="btn btn-default" data-filter=".transition">transition</button>
 								<button class="btn btn-default" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
@@ -99,6 +100,7 @@
 								<button class="btn btn-default" data-filter=".metal:not(.transition)">metal but not transition</button>
 								<button class="btn btn-default" data-filter="numberGreaterThan50">number > 50</button>
 								<button class="btn btn-default" data-filter="ium">name ends with &ndash;ium</button>
+								*/ ?>
 							</div>
 
 
@@ -130,6 +132,7 @@
 								</div>
 								<?php endforeach; wp_reset_postdata(); ?>
 
+								<?php /*
 								<div class="element-item transition metal " data-category="transition">
 									<h3 class="name">Mercury</h3>
 									<p class="symbol">Hg</p>
@@ -238,6 +241,7 @@
 									<p class="number">94</p>
 									<p class="weight">(244)</p>
 								</div>
+								*/?>
 							</div>
 						</div>
 					</div>
@@ -263,6 +267,27 @@
 
 			<div class="space"></div>
 
+			<?php  $args = array(
+				//'posts_per_page'   => 5,
+				//'offset'           => 0,
+				//'category'         => '',
+				'category_name'    => 'productos-pagina-principal',
+				'orderby'          => 'date',
+				//'order'            => 'DESC',
+				//'include'          => '',
+				//'exclude'          => '',
+				//'meta_key'         => '',
+				//'meta_value'       => '',
+				//'post_type'        => 'post',
+				//'post_mime_type'   => '',
+				//'post_parent'      => '',
+				//'author'	   => '',
+				//'author_name'	   => '',
+				'post_status'      => 'publish',
+				'suppress_filters' => true
+			);
+			$posts_array = get_posts( $args ); ?>			
+
 			<div class="products">
 				<div class="container">
 					<div class="row">
@@ -272,6 +297,22 @@
 						</div>
 					</div>
 					<div class="row section-content">
+						<?php foreach ( $posts_array as $post ) : setup_postdata( $post ); ?>
+						<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' ); ?>
+
+						<div class="col-sm-4 col-xs-12">
+							<div class="crop">
+								<img src="<?php echo $image[0]; ?>" class="img-responsive" alt="<?php the_title(); ?>" />
+							</div>
+							<div class="product-info">
+								<h3><?php the_title(); ?></h3>
+								<?php the_excerpt(); ?>
+								<a href="<?php the_permalink(); ?>">Leer más</a>
+							</div>
+						</div>
+						<?php endforeach; wp_reset_postdata(); ?>
+
+						<?php /*
 						<div class="col-sm-4 col-xs-12">
 							<div class="crop">
 								<img src="<?php bloginfo('template_url') ?>/assets/img/portadageometrias-01.jpg" class="img-responsive" alt="" />
@@ -331,10 +372,18 @@
 								<a href="#">Leer más</a>
 							</div>
 						</div>
+						*/ ?>
 					</div>
+					<?php
+						// Get the ID of a given category
+						$category_id = get_cat_ID( 'Productos' );
+
+						// Get the URL of this category
+						$category_link = get_category_link( $category_id );
+					?>
 					<div class="row section-content">
 						<div class="col-xs-12">
-							<button type="button" name="button" class="isc-btn">Ver mas productos</button>
+							<a href="<?php echo $category_link ?>" class="isc-btn">Ver mas productos</a>
 						</div>
 					</div>
 				</div>

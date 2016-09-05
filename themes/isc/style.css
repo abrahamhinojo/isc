@@ -248,7 +248,8 @@ body {
 }
 .isc-btn:hover {
   background-color: #e66096;
-  color: #fff;
+  color: #fff !important;
+  text-decoration: none;
 }
 .section-content {
   padding-top: 25px;
