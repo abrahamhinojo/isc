@@ -219,14 +219,14 @@ margin:0;
 padding:0;
 }
 
-
-
 /* uglyfy this please */
 body {
   /*font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+  background-color: #f8f8f8;
 }
 .nav {
   padding: 0 10px;
+  position: relative;
 }
 .nav ul {
   margin: 0;
@@ -236,6 +236,13 @@ body {
   display: inline-block;
   list-style: none;
   padding: 0 10px;
+}
+.nav ul li ul {
+  display: block;
+  list-style: none;
+  padding: 0 10px;
+  position: absolute;
+  z-index: 1;
 }
 .btn {
     background-image: none
@@ -254,6 +261,7 @@ body {
 .section-content {
   padding-top: 25px;
 }
+
 #header .header-wrap-social {
   background-color: #f8f8f8;
   border-bottom: 1px solid #eee;
@@ -263,23 +271,32 @@ body {
   background-color: #292929;
 }
 #header .header-wrap .header-logo{
-  display: block;
-  /*background-color: red;*/
-  background-image: url('assets/ISC-01-blanco.png');
+  display: inline-block;
   background-size: 100px;
   background-repeat: no-repeat;
-  height: 65px;
-  width: 120px;
+  height: 63px;
+  width: 100px;
 
   /* Hide the text. */
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
+#header .header-wrap .gob-logo {
+  background-image: url('assets/escudo-gobierno-01.png');
+}
+#header .header-wrap .isc-logo {
+  background-image: url('assets/ISC-01-blanco.png');
+}
+
 #header h1 {
   padding-left: 20px;
   font-size: 16px;
   margin: 0;
+}
+
+#header .main-nav {
+  display: none;
 }
 #header .main-nav ul li a {
   display: block;
@@ -305,6 +322,88 @@ body {
   padding-bottom: 10px;
   color: #121212;
 }
+
+#header .main-nav-toggle {
+    background-color: transparent;
+    color: #fff;
+    font-size: 30px;
+    border-width: 0;
+    margin: 15px;
+}
+
+#header .main-nav ul li:hover ul {
+  visibility: visible;
+  opacity: .9;
+}
+
+#header .main-nav ul li ul {
+    background-color: #292929;
+    padding: 10px 20px;
+    width: 100%;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: all 0.5s;
+}
+#header .main-nav ul li ul li {
+  display: inline-block;
+  list-style: none;
+  padding: 0 15px 0 0;
+}
+#header .main-nav ul li ul li::after{
+  content: '|';
+  color: #fff;
+}
+#header .main-nav ul li ul li a {
+  padding-top: 4px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  display: inline-block;
+  padding-right: 15px;
+}
+
+/* Mobile Nav stuff */
+.hfeed {
+  background-color: #fff;
+  position: relative;
+  right: 0;   
+  -webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
+  transition: all 0.5s;
+}
+.hfeed.show-nav {
+  right:calc(0% + 300px);
+} 
+.main-nav-mobile {
+  position: absolute;
+  right: 0;
+  background-color: #f8f8f8;
+  width: 300px;
+  padding-top: 57px;
+}
+.main-nav-mobile ul li {
+  display: block;
+}
+.main-nav-mobile ul li a {
+    display: block;
+    font-size: 30px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+    color: #121212;
+}
+
+@media (min-width: 980px) {
+  #header .main-nav-toggle {
+    display: none;
+  }
+
+  #header .main-nav {
+    display: block;
+    float: right;
+  }
+}
+
 #footer .footer-wraper {
   background-color: #292929;
   padding-top: 15px;
@@ -337,8 +436,13 @@ body {
 #footer .subscribe {
   text-align: right;
 }
+
+
+
+
 #content img {
   max-height: 900px;
+  width: 100%;
 }
 #content a {
   color: #881543;
@@ -388,6 +492,9 @@ body {
   font-weight: 100;
   font-size: 18px;
   letter-spacing: 1px;
+}
+#content .products .products-item {
+  margin-bottom: 25px;
 }
 #content .videos {
   text-align: center;
@@ -500,7 +607,7 @@ body {
   margin: 5px;
   background: #888;
   color: white;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .element-item img {

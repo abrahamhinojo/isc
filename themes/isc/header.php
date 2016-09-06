@@ -25,6 +25,19 @@
 </head>
 
 <body class="<?php sandbox_body_class() ?>">
+
+<nav id="main-nav-mobile" class="main-nav-mobile nav">
+	<ul>
+		<li><a href="#">ISC</a></li>
+		<li><a href="#">Artes</a></li>
+		<li><a href="#">Programas</a></li>
+		<li><a href="#">Centros Culturales</a></li>
+		<li><a href="#">Patrimonio</a></li>
+		<li><a href="#">Convocatorias</a></li>
+		<li><a href="#">Sitios</a></li>
+	</ul>
+</nav>
+
 <div id="wrapper" class="hfeed">
 
 	<div id="header">
@@ -50,15 +63,44 @@
 			<h1 id="blog-title" class="pull-left">
 				<span>
 					<a
-						class="header-logo"
+						class="header-logo gob-logo"
+						href="<?php bloginfo('home') ?>/"
+						title="<?php echo _wp_specialchars( get_bloginfo('name'), 1 ) ?>"
+						rel="home"><?php bloginfo('name') ?></a>
+					<a
+						class="header-logo isc-logo"
 						href="<?php bloginfo('home') ?>/"
 						title="<?php echo _wp_specialchars( get_bloginfo('name'), 1 ) ?>"
 						rel="home"><?php bloginfo('name') ?></a></span>
 			</h1>
-			<nav id="main-nav" class="pull-right nav main-nav">
+			<nav id="main-nav" class="nav main-nav">
 				<ul>
-					<li><a href="#">ISC</a></li>
-					<li><a href="#">Artes</a></li>
+					<li><a href="#">ISC</a>
+						<?php
+						$my_wp_query = new WP_Query();
+						$portfolio =  get_page_by_title('ISC');
+						$portfolio_children = get_pages('sort_column=menu_order&child_of=' . $portfolio->ID);
+						if ( !empty($portfolio_children) ) :
+						?>
+						<ul>
+							<?php foreach ( $portfolio_children as $page ) : ?>
+							<li><a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title?></a></li>
+							<?php endforeach; wp_reset_postdata(); ?>
+						</ul>
+						<?php endif; ?>
+					</li>
+					<li><a href="#">Artes</a>
+						<ul>
+							<li><a href="#">Danza</a></li>
+							<li><a href="#">Teatro</a></li>
+							<li><a href="#">Música</a></li>
+							<li><a href="#">Visuales</a></li>
+							<li><a href="#">Plásticas</a></li>
+							<li><a href="#">Literatura</a></li>
+							<li><a href="#">Cine</a></li>
+							<li><a href="#">Promotores culturales</a></li>
+						</ul>
+					</li>
 					<li><a href="#">Programas</a></li>
 					<li><a href="#">Centros Culturales</a></li>
 					<li><a href="#">Patrimonio</a></li>
@@ -66,6 +108,7 @@
 					<li><a href="#">Sitios</a></li>
 				</ul>
 			</nav>
+			<button class="pull-right main-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
 		</div>
 		<div id="blog-description" class="sr-only"><?php bloginfo('description') ?></div>
 	</div><!--  #header -->

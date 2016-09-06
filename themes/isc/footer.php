@@ -52,7 +52,21 @@
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/fancybox-master/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/fancybox-master/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 
+<script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/nav.js"></script>
+
 <script type="text/javascript">
+
+	$( document ).ready(function() {
+			$('.main-nav-toggle').on( "click", function() {
+					var hfeed = $('.hfeed');
+					if (hfeed.hasClass( 'show-nav' ) ) {
+						hfeed.removeClass('show-nav');
+					} else {
+						hfeed.addClass('show-nav');
+					}
+			});
+	});
+
 	$(document).ready(function() {
 		$('.fancybox-media')
 			.attr('rel', 'media-gallery')

@@ -1,5 +1,24 @@
 <?php get_header() ?>
 
+						<?php
+						/*
+						// Set up the objects needed
+						$my_wp_query = new WP_Query();
+						//$all_wp_pages = $my_wp_query->query(array('post_type' => 'page'));
+
+						// Get the page as an Object
+						$portfolio =  get_page_by_title('ISC');
+
+						// Filter through all pages and find Portfolio's children
+						//$portfolio_children = get_page_children( $portfolio->ID, $all_wp_pages );
+						$portfolio_children = get_pages('sort_column=menu_order&child_of=' . $portfolio->ID);
+
+						// echo what we get back from WP to the browser
+						echo '<pre>' . print_r( $portfolio_children, true ) . '</pre>';
+						wp_reset_postdata();
+						*/
+						?>
+
 	<div id="container">
 		<div id="content">
 
@@ -300,14 +319,14 @@
 						<?php foreach ( $posts_array as $post ) : setup_postdata( $post ); ?>
 						<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' ); ?>
 
-						<div class="col-sm-4 col-xs-12">
+						<div class="col-sm-4 col-xs-12 products-item">
 							<div class="crop">
 								<img src="<?php echo $image[0]; ?>" class="img-responsive" alt="<?php the_title(); ?>" />
 							</div>
 							<div class="product-info">
 								<h3><?php the_title(); ?></h3>
 								<?php the_excerpt(); ?>
-								<a href="<?php the_permalink(); ?>">Leer más</a>
+								<a href="<?php the_permalink(); ?>" class="products-read-more">Leer más</a>
 							</div>
 						</div>
 						<?php endforeach; wp_reset_postdata(); ?>
