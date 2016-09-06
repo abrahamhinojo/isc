@@ -28,6 +28,8 @@
 
 <nav id="main-nav-mobile" class="main-nav-mobile nav">
 	<ul>
+		<li class="show-small"><a href="#">#CulturaSonora</a></li>
+		<li class="show-small"><a href="#">Sala de Prensa</a></li>
 		<li><a href="#">ISC</a></li>
 		<li><a href="#">Artes</a></li>
 		<li><a href="#">Programas</a></li>
@@ -42,13 +44,13 @@
 
 	<div id="header">
 		<div class="clearfix header-wrap-social">
-			<nav id="cultural-nav" class="pull-left nav cultural-nav">
+			<nav id="cultural-nav" class="nav cultural-nav">
 				<ul>
 					<li><a href="#">#CulturaSonora</a></li>
 					<li><a href="#">Sala de Prensa</a></li>
 				</ul>
 			</nav>
-			<nav id="social-nav" class="pull-right nav social-nav">
+			<nav id="social-nav" class="nav social-nav">
 				<ul>
 					<li><a href="https://www.facebook.com/iscsonora/"><span class="fa fa-facebook" aria-hidden="true"></span></a></li>
 					<li><a href="https://twitter.com/ISCsonora"><span  class="fa fa-twitter" aria-hidden="true"></i></span></a></li>

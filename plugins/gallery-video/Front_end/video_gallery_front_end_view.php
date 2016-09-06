@@ -4179,7 +4179,6 @@ jQuery(function(){
 				left: 0px;
 				z-index: 6;
 				border-radius: <?php echo $paramssld["thumb_image_border_radius"]; ?>px;
-				margin: 10px;
 			}
 
 			#huge_it_videogallery li img {
