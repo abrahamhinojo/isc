@@ -30,9 +30,11 @@
 	<ul>
 		<li class="show-small"><a href="#">#CulturaSonora</a></li>
 		<li class="show-small"><a href="#">Sala de Prensa</a></li>
+		<li class="show-small"><a href="#">PECAS</a></li>
+		<li class="show-small"><a href="#">ISCRadio</a></li>
 		<li><a href="#">ISC</a></li>
 		<li><a href="#">Artes</a></li>
-		<li><a href="#">Programas</a></li>
+		<li><a href="#">Programas y Festivales</a></li>
 		<li><a href="#">Centros Culturales</a></li>
 		<li><a href="#">Patrimonio</a></li>
 		<li><a href="#">Convocatorias</a></li>
@@ -47,7 +49,9 @@
 			<nav id="cultural-nav" class="nav cultural-nav">
 				<ul>
 					<li><a href="#">#CulturaSonora</a></li>
-					<li><a href="#">Sala de Prensa</a></li>
+					<li><a href="#">Sala de Prensa</a></li>					
+					<li><a href="#">PECAS</a></li>
+					<li><a href="#">ISCRadio</a></li>
 				</ul>
 			</nav>
 			<nav id="social-nav" class="nav social-nav">
@@ -77,40 +81,41 @@
 			</h1>
 			<nav id="main-nav" class="nav main-nav">
 				<ul>
-					<li><a href="#">ISC</a>
+
+					<?php
+						$nav = [
+							'ISC',
+							'Artes',
+							'Programas y Festivales',
+							'Centros Culturales',
+							'Patrimonio'
+						];
+					?>
+					<?php foreach ( $nav as $item ) : ?>
 						<?php
-						$my_wp_query = new WP_Query();
-						$portfolio =  get_page_by_title('ISC');
-						$portfolio_children = get_pages('sort_column=menu_order&child_of=' . $portfolio->ID);
-						if ( !empty($portfolio_children) ) :
+							$my_wp_query = new WP_Query();
+							$parent =  get_page_by_title($item);
 						?>
-						<ul>
-							<?php foreach ( $portfolio_children as $page ) : ?>
-							<li><a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title?></a></li>
-							<?php endforeach; wp_reset_postdata(); ?>
-						</ul>
-						<?php endif; ?>
-					</li>
-					<li><a href="#">Artes</a>
-						<ul>
-							<li><a href="#">Danza</a></li>
-							<li><a href="#">Teatro</a></li>
-							<li><a href="#">Música</a></li>
-							<li><a href="#">Visuales</a></li>
-							<li><a href="#">Plásticas</a></li>
-							<li><a href="#">Literatura</a></li>
-							<li><a href="#">Cine</a></li>
-							<li><a href="#">Promotores culturales</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Programas</a></li>
-					<li><a href="#">Centros Culturales</a></li>
-					<li><a href="#">Patrimonio</a></li>
+						<li><a href="<?php echo get_page_link($parent->ID); ?>"><?php echo $parent->post_title ?></a>
+							<?php
+								$parent_children = get_pages('sort_column=menu_order&child_of=' . $parent->ID);
+								if ( !empty($parent_children) ) :
+							?>
+							<ul>
+								<?php foreach ( $parent_children as $page ) : ?>
+								<li><a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title?></a></li>
+								<?php endforeach; wp_reset_postdata(); ?>
+							</ul>
+							<?php endif; ?>
+						</li>
+					<?php endforeach; ?>
+
+
 					<li><a href="#">Convocatorias</a></li>
 					<li><a href="#">Sitios</a></li>
 				</ul>
 			</nav>
-			<button class="pull-right main-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+			<a class="pull-right main-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 		</div>
 		<div id="blog-description" class="sr-only"><?php bloginfo('description') ?></div>
 	</div><!--  #header -->
