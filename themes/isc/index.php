@@ -71,11 +71,11 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="portfolio">
-							<h2>Últimas Noticias!</h2>
-							<p>Nuestra mas reciente información en todo el ISC</p>
+							<h2>Últimas Noticias</h2>
+							<p>La información más reciente del ISC</p>
 
 							<?php  $args = array(
-								//'posts_per_page'   => 5,
+								'posts_per_page'   => 8,
 								//'offset'           => 0,
 								//'category'         => '',
 								'category_name'    => 'ultimas-noticias',
@@ -311,8 +311,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12">
-							<h2>Nuestros productos sonorenses</h2>
-							<p>Hermosos y maravillosos son nuestros productos hechos por grandes artistas sonorenses!</p>
+							<h2>Nuestros productos</h2>
+							<p>Adquiere productos hechos por artistas sonorenses</p>
 						</div>
 					</div>
 					<div class="row section-content">
@@ -402,7 +402,7 @@
 					?>
 					<div class="row section-content">
 						<div class="col-xs-12">
-							<a href="<?php echo $category_link ?>" class="isc-btn">Ver mas productos</a>
+							<a href="<?php echo $category_link ?>" class="isc-btn">Ver más productos</a>
 						</div>
 					</div>
 				</div>
@@ -415,7 +415,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<h2>Subscríbete a nuestro <strong>boletín cultural</strong></h2>
-							<p>¿Estás interesado en todos los eventos culturales del Estado de Sonora? ¡No lo pienses más y subscribete!</p>
+							<p>¿Estás interesado en los eventos culturales del Estado de Sonora? ¡No lo pienses más y subscríbete!</p>
 							<p>&nbsp;</p>
 							<p>&nbsp;</p>
 							<p>

@@ -1,16 +1,36 @@
 <?php get_header() ?>
 
+<div class="entry-title-background" style="background-image: url('<?php echo $image[0]; ?>')">
+	<div  class="entry-title-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h2 class="entry-title">Buscar</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="search-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-9">
+
 	<div id="container">
 		<div id="content">
 
 <?php if ( have_posts() ) : ?>
 
-		<h2 class="page-title"><?php _e( 'Search Results for:', 'sandbox' ) ?> <span><?php the_search_query() ?></span></h2>
+		<h2 class="page-title serch-title"><?php _e( 'Resultados de la búsqueda:', 'sandbox' ) ?> <span><?php the_search_query() ?></span></h2>
+		<?php /*<h2 class="page-title"><?php _e( 'Search Results for:', 'sandbox' ) ?> <span><?php the_search_query() ?></span></h2>*/ ?>
 
+			<!--
 			<div id="nav-above" class="navigation">
 				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&laquo;</span> Older results', 'sandbox' ) ) ?></div>
 				<div class="nav-next"><?php previous_posts_link( __( 'Newer results <span class="meta-nav">&raquo;</span>', 'sandbox' ) ) ?></div>
 			</div>
+			-->
 
 <?php while ( have_posts() ) : the_post() ?>
 
@@ -19,10 +39,18 @@
 				<div class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php unset($previousday); printf( __( '%1$s &#8211; %2$s', 'sandbox' ), the_date( '', '', '', false ), get_the_time() ) ?></abbr></div>
 				<div class="entry-content">
 <?php the_excerpt( __( 'Read More <span class="meta-nav">&raquo;</span>', 'sandbox' ) ) ?>
-
+				<a href="<?php the_permalink(); ?>" class="products-read-more">Leer más</a>
 				</div>
 
 <?php if ( $post->post_type == 'post' ) { ?>
+				<div class="entry-meta">
+					<span class="cat-links"><?php printf( __( 'Publicado en %s', 'sandbox' ), get_the_category_list(', ') ) ?></span>
+					<span class="meta-sep">|</span>
+					<?php the_tags( __( '<span class="tag-links">Etiquetado como  ', 'sandbox' ), ", ", "</span>\n\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
+<?php edit_post_link( __( 'Edit', 'sandbox' ), "\t\t\t\t\t<span class=\"edit-link\">", "</span>" ) ?>
+				</div>			
+
+				<?php /*
 				<div class="entry-meta">
 					<span class="author vcard"><?php printf( __( 'By %s', 'sandbox' ), '<a class="url fn n" href="' . get_author_posts_url( $authordata->ID, $authordata->user_nicename ) . '" title="' . sprintf( __( 'View all posts by %s', 'sandbox' ), $authordata->display_name ) . '">' . get_the_author() . '</a>' ) ?></span>
 					<span class="meta-sep">|</span>
@@ -32,8 +60,9 @@
 <?php edit_post_link( __( 'Edit', 'sandbox' ), "\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
 					<span class="comments-link"><?php comments_popup_link( __( 'Comments (0)', 'sandbox' ), __( 'Comments (1)', 'sandbox' ), __( 'Comments (%)', 'sandbox' ) ) ?></span>
 				</div>
+				*/ ?>
 <?php } ?>
-
+				<hr />
 			</div><!-- .post -->
 
 <?php endwhile; ?>
@@ -46,14 +75,16 @@
 <?php else : ?>
 
 			<div id="post-0" class="post no-results not-found">
-				<h2 class="entry-title"><?php _e( 'Nothing Found', 'sandbox' ) ?></h2>
+				<h2 class="entry-title"><?php _e( 'Nada Encontrado', 'sandbox' ) ?></h2>
+				<?php /*<h2 class="entry-title"><?php _e( 'Nothing Found', 'sandbox' ) ?></h2>*/?>
 				<div class="entry-content">
-					<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'sandbox' ) ?></p>
+					<p><?php _e( 'Lo sentimos, pero nada corresponde a sus criterios de búsqueda. Por favor, inténtelo de nuevo con algunas palabras clave diferentes.', 'sandbox' ) ?></p>
+					<?php /*<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'sandbox' ) ?></p> */ ?>
 				</div>
 				<form id="searchform-no-results" class="blog-search" method="get" action="<?php bloginfo('home') ?>">
 					<div>
-						<input id="s-no-results" name="s" class="text" type="text" value="<?php the_search_query() ?>" size="40" />
-						<input class="button" type="submit" value="<?php _e( 'Find', 'sandbox' ) ?>" />
+						<input id="s-no-results" name="s" class="text" type="text" value="<?php the_search_query() ?>" size="40" /><input class="button search-btn" type="submit" value="<?php _e( 'Buscar', 'sandbox' ) ?>" />
+						<?php /*<input class="button" type="submit" value="<?php _e( 'Find', 'sandbox' ) ?>" />*/?>
 					</div>
 				</form>
 			</div><!-- .post -->
@@ -63,5 +94,12 @@
 		</div><!-- #content -->
 	</div><!-- #container -->
 
+			</div> <!-- .col -->
+			<div class="col-xs-12 col-sm-3">
 <?php get_sidebar() ?>
+			</div><!-- .col -->
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+</div> <!-- .page-wrapper -->
+
 <?php get_footer() ?>

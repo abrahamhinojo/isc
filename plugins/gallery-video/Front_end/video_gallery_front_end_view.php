@@ -230,14 +230,14 @@ $paramssld["thumb_image_width"] = "320";
 $paramssld["thumb_image_height"] = "180";
 $paramssld["thumb_image_border_width"] = "1";
 $paramssld["thumb_image_border_color"] = "fff";
-$paramssld["thumb_image_border_radius"] = "5";
-$paramssld["thumb_margin_image"] = "10";
+$paramssld["thumb_image_border_radius"] = "0";
+$paramssld["thumb_margin_image"] = "0";
 $paramssld["thumb_title_font_size"] = "16";
 $paramssld["thumb_title_font_color"] = "FFFFFF";
 $paramssld["thumb_title_background_color"] = "881543";
 $paramssld["thumb_title_background_transparency"] = "80";
 $paramssld["thumb_box_padding"] = "0";
-$paramssld["thumb_box_background"] = "fff";
+$paramssld["thumb_box_background"] = "transparent";
 $paramssld["thumb_box_use_shadow"] = "off";
 $paramssld["thumb_box_has_background"] = "on";
 $paramssld["thumb_view_text"] = "click para ver el video";
@@ -4086,7 +4086,7 @@ jQuery(function(){
 				width: 100%;
 				max-width: <?php echo $paramssld["thumb_image_width"]; ?>px;
 				height:<?php echo $paramssld["thumb_image_height"]; ?>px;
-				margin: <?php echo $paramssld["thumb_margin_image"]; ?>px !important;
+				margin: 3px 0px !important;
                                 border: <?php echo $paramssld["thumb_image_border_width"]; ?>px solid #<?php echo $paramssld["thumb_image_border_color"]; ?>;
 				border-radius: <?php echo $paramssld["thumb_image_border_radius"]; ?>px;
 			}
@@ -4274,8 +4274,7 @@ jQuery(function(){
 					switch($imagerowstype){
 						case 'image':
 					?>
-                                    <a class="videogroup<?php echo $videogalleryID; ?>" href="<?php echo $row->image_url; ?>"></a>
-						<img src="<?php echo $row->image_url; ?>" alt="<?php echo str_replace('__5_5_5__','%',$row->name); ?>" />
+                		<a class="videogroup<?php echo $videogalleryID; ?>" href="<?php echo $row->image_url; ?>"></a><img src="<?php echo $row->image_url; ?>" alt="<?php echo str_replace('__5_5_5__','%',$row->name); ?>" />
 					<?php
 						break;
 						case 'video':
@@ -4290,9 +4289,7 @@ jQuery(function(){
 											$thumb_pic=$row->thumb_url;
 										}
 									?>
-
-									<a rel="media-gallery" class="fancybox-media vyoutube huge_it_videogallery_item videogroup<?php echo $videogalleryID; ?>" href="https://www.youtube.com/embed/<?php echo $videourl[0]; ?>" title="<?php echo str_replace('__5_5_5__','%',$row->name); ?>"></a>
-									<img src="<?php echo $thumb_pic; ?>" alt="<?php echo str_replace('__5_5_5__','%',$row->name); ?>" />
+									<a rel="media-gallery" class="fancybox-media vyoutube huge_it_videogallery_item videogroup<?php echo $videogalleryID; ?>" href="https://www.youtube.com/embed/<?php echo $videourl[0]; ?>" title="<?php echo str_replace('__5_5_5__','%',$row->name); ?>"></a><img src="<?php echo $thumb_pic; ?>" alt="<?php echo str_replace('__5_5_5__','%',$row->name); ?>" />
 								<?php
 								}else {
 
@@ -4304,8 +4301,7 @@ jQuery(function(){
 										$imgsrc=$row->thumb_url;
 									}
 								?>
-									<a rel="media-gallery" class="fancybox-media vvimeo huge_it_videogallery_item videogroup<?php echo $videogalleryID; ?>" href="http://player.vimeo.com/video/<?php echo $videourl[0]; ?>" title="<?php echo str_replace('__5_5_5__','%',$row->name); ?>"></a>
-									<img src="<?php echo $imgsrc; ?>" alt="<?php echo str_replace('__5_5_5__','%',$row->name); ?>" />
+									<a rel="media-gallery" class="fancybox-media vvimeo huge_it_videogallery_item videogroup<?php echo $videogalleryID; ?>" href="http://player.vimeo.com/video/<?php echo $videourl[0]; ?>" title="<?php echo str_replace('__5_5_5__','%',$row->name); ?>"></a><img src="<?php echo $imgsrc; ?>" alt="<?php echo str_replace('__5_5_5__','%',$row->name); ?>" />
 								<?php
 								}
 							?>

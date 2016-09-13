@@ -32,13 +32,22 @@
 		<li class="show-small"><a href="#">Sala de Prensa</a></li>
 		<li class="show-small"><a href="#">PECAS</a></li>
 		<li class="show-small"><a href="#">ISCRadio</a></li>
-		<li><a href="#">ISC</a></li>
-		<li><a href="#">Artes</a></li>
-		<li><a href="#">Programas y Festivales</a></li>
-		<li><a href="#">Centros Culturales</a></li>
-		<li><a href="#">Patrimonio</a></li>
-		<li><a href="#">Convocatorias</a></li>
-		<li><a href="#">Sitios</a></li>
+		<?php
+			$nav = [
+				'ISC',
+				'Artes',
+				'Programas y Festivales',
+				'Centros Culturales',
+				'Patrimonio'
+			];
+		?>
+		<?php foreach ( $nav as $item ) : ?>
+			<?php
+				$my_wp_query = new WP_Query();
+				$parent =  get_page_by_title($item);
+			?>
+			<li><a href="<?php echo get_page_link($parent->ID); ?>"><?php echo $parent->post_title ?></a></li>
+		<?php endforeach; ?>
 	</ul>
 </nav>
 
@@ -74,7 +83,7 @@
 						title="<?php echo _wp_specialchars( get_bloginfo('name'), 1 ) ?>"
 						rel="home"><?php bloginfo('name') ?></a>
 					<a
-						class="header-logo isc-logo"
+						class="header-logo isc-logo-color"
 						href="<?php bloginfo('home') ?>/"
 						title="<?php echo _wp_specialchars( get_bloginfo('name'), 1 ) ?>"
 						rel="home"><?php bloginfo('name') ?></a></span>
