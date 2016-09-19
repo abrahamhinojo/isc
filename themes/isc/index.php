@@ -107,9 +107,9 @@
 							<?php endforeach; wp_reset_postdata(); ?>
 
 							<div id="filters" class="portfolio-filters button-group">
-								<button class="btn btn-default is-checked" data-filter="*">Ver todo</button>
+								<?php /* <button class="btn btn-default is-checked" data-filter="*">Ver todo</button> */ ?>
 								<?php foreach ($cats_buttons as $cat): ?>
-									<button class="btn btn-default is-checked" data-filter=".<?php echo $cat['slug']; ?>"><?php echo $cat['name']; ?></button>
+									<button class="btn btn-default is-checked" data-filter=".<?php echo $cat['slug']; ?>">Sobre <?php echo $cat['name']; ?></button>
 								<?php endforeach; ?>
 								<?php /*
 								<button class="btn btn-default" data-filter=".metal">metal</button>
