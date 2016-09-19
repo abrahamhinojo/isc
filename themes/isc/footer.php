@@ -12,8 +12,8 @@
 					<div class="col-sm-6">
 						<div class="nav footer-nav">
 							<ul>
-								<li><a href="#">Portal de Transparecia</a></li>
-								<li><a href="#">Revisar E-mail</a></li>
+								<li><a href="http://transparencia.esonora.gob.mx/Sonora/Transparencia/Poder+Ejecutivo/Entidades/INSTITUTO+SONORENSE+DE+CULTURA/">Portal de Transparecia</a></li>
+								<li><a href="https://www.google.com/a/isc.gob.mx/ServiceLogin?service=mail&passive=true&rm=false&continue=http://mail.google.com/a/isc.gob.mx/&ltmpl=default&ltmplcache=2https://www.google.com/a/isc.gob.mx/ServiceLogin?service=mail&passive=true&rm=false&continue=http://mail.google.com/a/isc.gob.mx/&ltmpl=default&ltmplcache=2">Revisar E-mail</a></li>
 							</ul>
 						</div>
 					</div>
