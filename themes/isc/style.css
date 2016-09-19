@@ -828,15 +828,25 @@ line-height: 1;
   padding-top: 15px;
   padding-bottom: 10px;
 }*/
-.breadcrumbs {
-  /*color: #fff;*/
-  font-size: 20px;
-  font-weight: 300;
-  letter-spacing: 1px;
-  padding-bottom: 20px;
+.entry-title-wrapper .page-header-title {
+  padding: 20px 0 20px 0;
 }
-.breadcrumbs a{
-  color: #121212;;
+.page-header-title .breadcrumbs {
+  font-size: 14px;
+  color: rgba(240,245,250,.6);
+}
+.page-header-title .breadcrumbs span a {
+  color: rgba(240,245,250,.6);
+}
+.page-header-title .breadcrumbs > span {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.2;
+}
+.page-header-title .breadcrumbs > span:last-child {
+  display: block;
+  font-size: 30px;
+  color: #fff;
 }
 #content .post .entry-title a, #content .page .entry-title a {
   color: #121212;

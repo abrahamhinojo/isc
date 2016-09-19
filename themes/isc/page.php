@@ -7,7 +7,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<h2 class="entry-title page-header-title"><?php the_title() ?></h2>
+					
+					<h2 class="entry-title page-header-title">
+						<div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+							<?php if(function_exists('bcn_display')) { bcn_display(); }?>
+						</div>
+					</h2>
+
 					<?php /*
 					<div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
 					<?php if(function_exists('bcn_display'))
