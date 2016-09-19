@@ -588,4 +588,14 @@ remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'wpse_custom_wp_trim_excerpt'); 
 
 // Remember: the Sandbox is for play.
+
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'header-menu' => __( 'Header Menu' ),
+      'mobile-menu' => __( 'Mobile Menu' )
+     )
+   );
+ }
+ add_action( 'init', 'register_my_menus' );
 ?>
