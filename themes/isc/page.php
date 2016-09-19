@@ -23,12 +23,21 @@
 </div>
 
 <?php
+	/*
 	$my_wp_query = new WP_Query();
 	$all_wp_pages = $my_wp_query->query(array('post_type' => 'page'));
 	$page_children = get_page_children( get_the_ID(), $all_wp_pages );
-	//echo '<pre>' . print_r( $page_children, true ) . '</pre>';
+	echo '<pre>' . print_r( $page_children, true ) . '</pre>';
+	*/
+
+	$my_wp_query = new WP_Query();
+	$parent =  get_page_by_title(get_the_title());
+	$parent_children = get_pages('sort_column=menu_order&child_of=' . $parent->ID);
+	//echo get_the_ID();
+	//echo '<pre>' . print_r( $parent_children, true ) . '</pre>';
 ?>
 <div class="page-wrapper">
+	<?php /*
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
@@ -38,20 +47,25 @@
 			</div>
 		</div>
 	</div>
+	*/ ?>
+
+
 	<div class="container">
 		<div class="row">
-			<?php if ( !empty($page_children) ) : ?>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
-				<div class="page-children">
-					<ul>
-						<?php foreach($page_children as $page) : ?>
-						<li><a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title ?></a></li>
-						<?php endforeach ?>
-					</ul>
-				</div>
-			</div>
-			<?php endif ?>
-			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-<?php if ( !empty($page_children) ) : ?>7<?php else : ?>9<?php endif ?>">
+			<div class="col-xs-12 col-sm-9">
+
+				<?php if ( !empty($parent_children) ) : ?>
+					<div class="page-children">
+						<ul>
+							<?php foreach ( $parent_children as $page ) : ?>
+								<?php if ($page->post_parent == $parent->ID) : ?>
+									<li><a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title?></a></li>
+								<?php endif; ?>
+							<?php endforeach; wp_reset_postdata(); ?>
+						</ul>
+					</div>
+				<?php else : ?>
+
 
 	<div id="container">
 		<div id="content">
@@ -81,10 +95,14 @@
 		</div><!-- #content -->
 	</div><!-- #container -->
 
+
+				<?php endif ?>
+
 			</div> <!-- .col -->
 			<div class="col-xs-12 col-sm-3">
 <?php get_sidebar() ?>
 			</div><!-- .col -->
+
 		</div> <!-- .row -->
 	</div> <!-- .container -->
 </div> <!-- .page-wrapper -->
