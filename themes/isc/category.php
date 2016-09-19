@@ -1,6 +1,6 @@
 <?php get_header() ?>
 
-<div class="entry-title-background" style="background-image: url('<?php echo $image[0]; ?>')">
+<div class="entry-title-background">
 	<div  class="entry-title-wrapper">
 		<div class="container">
 			<div class="row">
@@ -31,8 +31,13 @@
 			-->
 
 <?php while ( have_posts() ) : the_post() ?>
-
+			<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' ); ?>
 			<div id="post-<?php the_ID() ?>" class="<?php sandbox_post_class() ?>">
+				<?php if (is_array($image)) : ?>
+				<div class="category post-head-image">
+					<img src="<?php echo $image[0]; ?>" class="img-responsive" alt="<?php the_title(); ?>" />
+				</div>
+				<?php endif ?>
 				<h3 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf( __( 'Permalink to %s', 'sandbox' ), the_title_attribute('echo=0') ) ?>" rel="bookmark"><?php the_title() ?></a></h3>
 				<div class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php unset($previousday); printf( __( '%1$s &#8211; %2$s', 'sandbox' ), the_date( '', '', '', false ), get_the_time() ) ?></abbr></div>
 				<div class="entry-content">
@@ -68,8 +73,8 @@
 <?php endwhile; ?>
 
 			<div id="nav-below" class="navigation">
-				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&laquo;</span> Older posts', 'sandbox' ) ) ?></div>
-				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&raquo;</span>', 'sandbox' ) ) ?></div>
+				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&laquo;</span> Publicaciones Anteriores', 'sandbox' ) ) ?></div>
+				<div class="nav-next"><?php previous_posts_link( __( 'Publicaciones Recientes <span class="meta-nav">&raquo;</span>', 'sandbox' ) ) ?></div>
 			</div>
 
 		</div><!-- #content -->
