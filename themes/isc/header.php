@@ -29,7 +29,7 @@
 <nav class="nav main-nav-mobile">
 	<?php wp_nav_menu( array( 'theme_location' => 'mobile-menu' ) ); ?>
 </nav>
-<!--
+<?php /*
 <nav id="main-nav-mobile" class="main-nav-mobile nav">
 	<ul>
 		<?php
@@ -67,7 +67,7 @@
 			<li><a href="#"> Blogs</a></li>
 	</ul>
 </nav>
--->
+*/ ?>
 
 <div id="wrapper" class="hfeed">
 
@@ -118,7 +118,8 @@
 			<nav class="nav main-nav">
 				<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 			</nav>
-			<!--<nav id="main-nav" class="nav main-nav">
+			<?php /*
+			<nav id="main-nav" class="nav main-nav">
 				<ul>
 
 					<?php
@@ -229,14 +230,15 @@
 					</li>
 					<li><a href="#">Blogs</a></li>
 				</ul>
-			</nav>-->
+			</nav> */?>
 			<a class="pull-right main-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 		</div>
 		<div id="blog-description" class="sr-only"><?php bloginfo('description') ?></div>
 	</div><!--  #header -->
 
-	<!--
+	<?php /*
 	<div id="access">
 		<div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', 'sandbox' ) ?>"><?php _e( 'Skip to content', 'sandbox' ) ?></a></div>
 		<?php sandbox_globalnav() ?>
-	</div>--><!-- #access -->
+	</div><!-- #access -->
+	*/?>
