@@ -15,7 +15,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url') ?>/assets/fancybox-master/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
 
 
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url') ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url') ?>?v=0.35" />
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url') ?>/styles/main.css?v=0.03" />
 <?php wp_head() // For plugins ?>
 	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url') ?>" title="<?php printf( __( '%s latest posts', 'sandbox' ), _wp_specialchars( get_bloginfo('name'), 1 ) ) ?>" />
 	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'sandbox' ), _wp_specialchars( get_bloginfo('name'), 1 ) ) ?>" />
@@ -71,6 +72,60 @@
 
 <div id="wrapper" class="hfeed">
 
+	<div class="gob-header">
+		<div class="clearfix gob-header-wrap-social">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-8 col-sm-8">
+						<ul class="gob-header-wrap-social-main-info">
+							<li><h1>Instituto Sonorense de Cultura</h1></li>
+							<li><span class="fa fa-phone" aria-hidden="true"></span> 01 662 2134411</li>
+							<li><span class="fa fa-envelope" aria-hidden="true"></span> direccion@isc.gob.mx</li>
+						</ul>
+					</div>
+					<div class="col-sm-6 col-md-4 col-sm-4">
+						<ul class="gob-header-wrap-social-icons social-icons pull-right">
+							<li><a class="issuu" href="https://issuu.com/iscsonora"><span class="fa fa-info" aria-hidden="true"></span></a></li>
+							<li><a class="fb" href="https://www.facebook.com/iscsonora/"><span class="fa fa-facebook" aria-hidden="true"></span></a></li>
+							<li><a class="twitter" href="https://twitter.com/ISCsonora"><span  class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
+							<li><a class="instagram" href="https://www.instagram.com/iscsonora/"><span class="fa fa-instagram" aria-hidden="true"></span></a></li>
+							<li><a class="youtube" href="https://www.youtube.com/user/ISCSonora"><span class="fa fa-youtube-play" aria-hidden="true"></span></a></li>
+							<li><a class="flickr" href="https://www.flickr.com/photos/iscsonora/"><span class="fa fa-flickr" aria-hidden="true"></span></a></li>
+							<li><a class="periscope" href="https://www.periscope.tv/ISCsonora/"><span class="fa fa-map-marker" aria-hidden="true"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="gob-header-logo-nav">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-5  gob-header-logo-nav-logo">
+						<ul>
+							<li class="gob-header-logo-nav-img"><img src="<?php bloginfo('template_url') ?>/assets/logo-gob-son.png" class="img-responsive" alt="logo gobierno de sonora"></li>
+							<li class="gob-header-logo-nav-separador"><span></span></li>
+							<li class="gob-header-logo-nav-img gob-header-logo-nav-img-isc"><img src="<?php bloginfo('template_url') ?>/assets/ISC-02-color.png" class="img-responsive" alt="logo instituto sonorense de cultura"></li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-7  gob-header-logo-nav-nav">
+						<nav>
+							<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
+						</nav>
+
+						<div class="gob-header-search">
+							<form method="get" action="<?php bloginfo('home') ?>">
+								<span class="fa fa-search" aria-hidden="true"></span>
+								<input id="s" name="s" type="text" value="<?php the_search_query() ?>" />
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<?php /*
 	<div id="header">
 		<div class="clearfix header-wrap-social">
 			<div class="container">
@@ -90,6 +145,7 @@
 				</h1>
 				<nav id="social-nav" class="nav social-nav">
 					<ul>
+						<li><a href="https://issuu.com/iscsonora"><span class="fa fa-info" aria-hidden="true"></span></a></li>
 						<li><a href="https://www.facebook.com/iscsonora/"><span class="fa fa-facebook" aria-hidden="true"></span></a></li>
 						<li><a href="https://twitter.com/ISCsonora"><span  class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
 						<li><a href="https://www.instagram.com/iscsonora/"><span class="fa fa-instagram" aria-hidden="true"></span></a></li>
@@ -118,123 +174,11 @@
 			<nav class="nav main-nav">
 				<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 			</nav>
-			<?php /*
-			<nav id="main-nav" class="nav main-nav">
-				<ul>
-
-					<?php
-						$nav = [
-							'¿Quiénes somos?',
-						];
-					?>
-					<?php foreach ( $nav as $item ) : ?>
-						<?php
-							$my_wp_query = new WP_Query();
-							$parent =  get_page_by_title($item);
-						?>
-						<li><a href="<?php echo get_page_link($parent->ID); ?>"><?php echo $parent->post_title ?></a>
-							<?php
-								$parent_children = get_pages('sort_column=menu_order&child_of=' . $parent->ID);
-								if ( !empty($parent_children) ) :
-							?>
-							<ul>
-								<?php foreach ( $parent_children as $page ) : ?>
-									<?php if ($page->post_parent == $parent->ID) : ?>
-										<li><a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title?></a></li>
-									<?php endif; ?>
-								<?php endforeach; wp_reset_postdata(); ?>
-								<li><a href="http://transparencia.esonora.gob.mx/Sonora/Transparencia/Poder+Ejecutivo/Entidades/Instituto+Sonorense+de+Cultura/">Transparencia</a></li>
-							</ul>
-							<?php endif; ?>
-						</li>
-					<?php endforeach; ?>
-
-					<?php
-						$nav = [
-							'¿Qué hacemos?',
-							'Programas y Festivales'
-						];
-					?>
-					<?php foreach ( $nav as $item ) : ?>
-						<?php
-							$my_wp_query = new WP_Query();
-							$parent =  get_page_by_title($item);
-						?>
-						<li><a href="<?php echo get_page_link($parent->ID); ?>"><?php echo $parent->post_title ?></a>
-							<?php
-								$parent_children = get_pages('sort_column=menu_order&child_of=' . $parent->ID);
-								if ( !empty($parent_children)) :
-							?>
-							<ul>
-								<?php foreach ( $parent_children as $page ) : ?>
-									<?php if ($page->post_parent == $parent->ID) : ?>
-										<li><a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title?></a></li>
-									<?php endif; ?>
-								<?php endforeach; wp_reset_postdata(); ?>
-							</ul>
-							<?php endif; ?>
-						</li>
-					<?php endforeach; ?>
-
-					<li><a href="<?php bloginfo('home') ?>/categorias/convocatorias/">Convocatorias</a></li>
-					<li><a href="#">Sala de prensa</a>
-						<ul>
-							<li><a href="http://issuu.com/iscsonora/docs/agenda_cultural_septiembre_issuu?workerAddress=ec2-54-152-233-253.compute-1.amazonaws.com">#CulturaSonora</a></li>
-							<li><a href="<?php bloginfo('home') ?>/programa-de-radio-culturasonora/">Programa de radio #CulturaSonora</a></li>
-							<li><a href="https://www.youtube.com/user/ISCSonora">Youtube</a></li>
-							<li><a href="https://www.flickr.com/photos/iscsonora/">Galería</a></li>
-							<li><a href="<?php bloginfo('home') ?>/categorias/boletines/">Boletines</a></li>
-							<li><a href="<?php bloginfo('home') ?>/categorias/entrevistas/">Entrevistas</a></li>
-							<li><a href="<?php bloginfo('home') ?>/categorias/cronicas-y-resenas/">Crónicas y Reseñas</a></li>
-							<li><a href="<?php bloginfo('home') ?>/categorias/Ruedas de Prensa/">Ruedas de prensa</a></li>
-							<li><a href="<?php bloginfo('home') ?>/categorias/disenos/">Diseños</a></li>
-						</ul>
-					</li>
-
-					<?php
-						$nav = [
-							'ISC Radio',
-						];
-					?>
-					<?php foreach ( $nav as $item ) : ?>
-						<?php
-							$my_wp_query = new WP_Query();
-							$parent =  get_page_by_title($item);
-						?>
-						<li><a href="<?php echo get_page_link($parent->ID); ?>"><?php echo $parent->post_title ?></a>
-							<?php
-								$parent_children = get_pages('sort_column=menu_order&child_of=' . $parent->ID);
-								if ( !empty($parent_children) ) :
-							?>
-							<ul>
-								<?php foreach ( $parent_children as $page ) : ?>
-									<?php if ($page->post_parent == $parent->ID) : ?>
-										<li><a href="<?php echo get_page_link($page->ID); ?>"><?php echo $page->post_title?></a></li>
-									<?php endif; ?>
-								<?php endforeach; wp_reset_postdata(); ?>
-								<li><a href="http://www.iscradio.gob.mx/">Link a sitio</a></li>
-							</ul>
-							<?php endif; ?>
-						</li>
-					<?php endforeach; ?>
-
-					<li><a href="#">Ligas de interés</a>
-						<ul>
-							<li><a href="http://www.isc.gob.mx/cine/index.html">Cine en Sonora</a></li>
-							<li><a href="http://www.isc.gob.mx/pecas2021/index.html">Pecas</a></li>
-							<li><a href="http://www.festivalortiztirado.gob.mx">Faot</a></li>
-							<li><a href="http://www.sonora.gob.mx">Gobierno del Estado</a></li>
-							<li><a href="http://www.sec.gob.mx">SEC</a></li>
-							<li><a href="http://cultura.gob.mx/">Secretaría de Cultura</a></li> 
-						</ul>
-					</li>
-					<li><a href="#">Blogs</a></li>
-				</ul>
-			</nav> */?>
 			<a class="pull-right main-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 		</div>
 		<div id="blog-description" class="sr-only"><?php bloginfo('description') ?></div>
 	</div><!--  #header -->
+	*/?>
 
 	<?php /*
 	<div id="access">

@@ -506,13 +506,13 @@ function sandbox_widgets_init() {
 function wpse_allowedtags() {
     // Add custom tags to this string
         //return '<script>,<style>,<br>,<em>,<i>,<ul>,<ol>,<li>,<a>,<p>,<img>,<video>,<audio>';
-		return '<hr>,<p>'; 
+		return '<hr>,<p><a>'; 
     }
 
 if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) : 
 
     function wpse_custom_wp_trim_excerpt($wpse_excerpt) {
-    $raw_excerpt = $wpse_excerpt;
+    	$raw_excerpt = $wpse_excerpt;
         if ( '' == $wpse_excerpt ) {
 
             $wpse_excerpt = get_the_content('');
@@ -567,6 +567,62 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
 
 endif; 
 
+// Custom excerpt
+function excerpt($limit) {
+	$excerpt = explode(' ', get_the_excerpt(), $limit);
+ 	if (count($excerpt)>=$limit) {
+		array_pop($excerpt);
+		$excerpt = implode(" ",$excerpt).'...';
+	} else {
+		$excerpt = implode(" ",$excerpt);
+
+ 	}
+ 	$excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+ 	return $excerpt;
+}
+
+function content($limit) {
+	$content = explode(' ', get_the_content(), $limit);
+	if (count($content)>=$limit) {
+		array_pop($content);
+		$content = implode(" ",$content).'...';
+	} else {
+		$content = implode(" ",$content);
+	}
+	$content = preg_replace('/[.+]/','', $content);
+	$content = apply_filters('the_content', $content);
+	$content = str_replace(']]>', ']]&gt;', $content);
+	return $content;
+
+}
+
+// Random background class
+function random_background (&$color) {
+	$input = array("red", "green", "orange");
+	$r = $input[$color];
+	$color = ($color == 2) ? 0 : $color + 1;
+	return $r;
+}
+
+// Custom excerpt
+function the_excerpt_max_charlength($excerpt, $charlength) {
+	$charlength++;
+
+	if ( mb_strlen( $excerpt ) > $charlength ) {
+		$subex = mb_substr( $excerpt, 0, $charlength - 5 );
+		$exwords = explode( ' ', $subex );
+		$excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
+		if ( $excut < 0 ) {
+			echo mb_substr( $subex, 0, $excut );
+		} else {
+			echo $subex;
+		}
+		echo '...';
+	} else {
+		echo $excerpt;
+	}
+}
+
 // Translate, if applicable
 load_theme_textdomain('sandbox');
 
@@ -593,9 +649,29 @@ function register_my_menus() {
   register_nav_menus(
     array(
       'header-menu' => __( 'Header Menu' ),
-      'mobile-menu' => __( 'Mobile Menu' )
+      'mobile-menu' => __( 'Mobile Menu' ),
+	  'top-footer-menu' => __( 'Top Footer Menu' ),
+	  'mid-footer-menu-sec-1' => __( 'Mid footer Menu Sec 1' ),
+	  'mid-footer-menu-sec-2' => __( 'Mid footer Menu Sec 2' ),
+	  'mid-footer-menu-sec-3' => __( 'Mid footer Menu Sec 3' )
      )
    );
  }
- add_action( 'init', 'register_my_menus' );
+add_action( 'init', 'register_my_menus' );
+
+function my_add_excerpts_to_pages() {
+	add_post_type_support( 'page', 'excerpt' );
+}
+add_action( 'init', 'my_add_excerpts_to_pages' );
+
+
+ function get_customs_fields($post) {
+	$nots = array("_edit_last", "_edit_lock", "post_sidebar", "_thumbnail_id");
+	$meta = get_post_meta($post->ID, '', false); 
+	$return = array();
+	foreach($meta as $key => $value): if (!in_array($key, $nots)) :  
+		$return[$key] = $value;
+	endif; endforeach;
+	return $return;
+ }
 ?>

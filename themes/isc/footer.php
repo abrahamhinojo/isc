@@ -1,25 +1,4 @@
-
-	<div id="footer">
-		<div class="footer-wraper">
-
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contact">
-							<strong>Instituto Sonorense de Cultura</strong><br>Obregón #58 entre Yáñez y Garmendia CP 83000 Teléfono 01 662 2134411
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="nav footer-nav">
-							<ul>
-								<li><a href="http://transparencia.esonora.gob.mx/Sonora/Transparencia/Poder+Ejecutivo/Entidades/INSTITUTO+SONORENSE+DE+CULTURA/">Portal de Transparecia</a></li>
-								<li><a href="https://www.google.com/a/isc.gob.mx/ServiceLogin?service=mail&passive=true&rm=false&continue=http://mail.google.com/a/isc.gob.mx/&ltmpl=default&ltmplcache=2https://www.google.com/a/isc.gob.mx/ServiceLogin?service=mail&passive=true&rm=false&continue=http://mail.google.com/a/isc.gob.mx/&ltmpl=default&ltmplcache=2">Revisar E-mail</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<!--
+				<?php /*
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="subscribe">
@@ -33,12 +12,97 @@
 						</div>
 					</div>
 				</div>
-				-->
+				*/?>
+
+	<section class="gob-footer">
+		<section class="gob-footer-top">
+			<div class="gob-footer-top-nav">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<nav>
+								<?php wp_nav_menu( array( 'theme_location' => 'top-footer-menu' ) ); ?>
+							</nav>
+						</div>
+						<div class="col-sm-6">
+							<ul class="gob-footer-top-nav-social-icons social-icons pull-right">
+								<li><a class="issuu" href="https://issuu.com/iscsonora"><span class="fa fa-info" aria-hidden="true"></span></a></li>
+								<li><a class="fb" href="https://www.facebook.com/iscsonora/"><span class="fa fa-facebook" aria-hidden="true"></span></a></li>
+								<li><a class="twitter" href="https://twitter.com/ISCsonora"><span  class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
+								<li><a class="instagram" href="https://www.instagram.com/iscsonora/"><span class="fa fa-instagram" aria-hidden="true"></span></a></li>
+								<li><a class="youtube" href="https://www.youtube.com/user/ISCSonora"><span class="fa fa-youtube-play" aria-hidden="true"></span></a></li>
+								<li><a class="flickr" href="https://www.flickr.com/photos/iscsonora/"><span class="fa fa-flickr" aria-hidden="true"></span></a></li>
+								<li><a class="periscope" href="https://www.periscope.tv/ISCsonora/"><span class="fa fa-map-marker" aria-hidden="true"></span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</section>
+
+		<section class="gob-footer-mid">
+			<div class="container">
+					<div class="row">
+						<div class="col-sm-5 secciones">
+							<h3>Nosotros</h3>
+							<?php wp_nav_menu( array( 'theme_location' => 'mid-footer-menu-sec-1' ) ); ?>
+						</div>
+						<div class="col-sm-4 secciones">
+							<h3>Secciones</h3>
+							<?php wp_nav_menu( array( 'theme_location' => 'mid-footer-menu-sec-2' ) ); ?>
+						</div>
+						<div class="col-sm-3">
+							<div class="transparencia">
+								<h3>Portales de Transparencia</h3>
+								<ul>
+									<li><a href="http://infomex.sonora.gob.mx/"><img src="<?php bloginfo('template_url') ?>/assets/banner-infomex.jpg" class="img-responsive" alt="Portal de transparencia"></a></li>
+									<li><a href="http://transparencia.esonora.gob.mx/Sonora/Transparencia/Poder+Ejecutivo/Entidades/Instituto+Sonorense+de+Cultura/" class="portal">Portal Transparencia<br>Sonora</a></li>
+								</ul>
+							</div>
+						</div>
+				</div>
+		</section>
+
+		<section class="gob-footer-bottom">
+			<p><img src="<?php bloginfo('template_url') ?>/assets/logo-sonora-unidos-logramos-mas-01.png" alt="Logo sonora" height="50"></p>
+			<p>
+				<strong>Instituto Sonorense de Cultura</strong> Obregón #58 entre Yáñez y Garmendia, colonia Centro, CP 83000. Hermosillo, Sonora, México.<br>
+				<strong>Teléfono:</strong> 01 662 2134411, <strong>Correo Electrónico:</strong> direccion@isc.gob.mx | <a href="http://isc.gob.mx/">http://isc.gob.mx/</a>
+			</p>
+			<p>© 2015 - 2021 Gobierno del Estado de Sonora. Todos los Derechos Reservados</p>
+		</section>
+	</section>
+	<?php /*
+	<div id="footer">
+		<div class="footer-wraper">
+
+			<nav class="nav sub-main-nav">
+				<?php wp_nav_menu( array( 'theme_location' => 'footer-menu' ) ); ?>
+			</nav>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contact">
+							<strong>Instituto Sonorense de Cultura</strong><br>Obregón #58 entre Yáñez y Garmendia CP 83000 Teléfono 01 662 2134411
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="nav footer-nav">
+							<ul>
+								<li><a href="http://transparencia.esonora.gob.mx/Sonora/Transparencia/Poder+Ejecutivo/Entidades/INSTITUTO+SONORENSE+DE+CULTURA/">Portal de Transparencia</a></li>
+								<li><a href="https://www.google.com/a/isc.gob.mx/ServiceLogin?service=mail&passive=true&rm=false&continue=http://mail.google.com/a/isc.gob.mx/&ltmpl=default&ltmplcache=2https://www.google.com/a/isc.gob.mx/ServiceLogin?service=mail&passive=true&rm=false&continue=http://mail.google.com/a/isc.gob.mx/&ltmpl=default&ltmplcache=2">Revisar E-mail</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
 			</div>
 
 		</div>
 	</div><!-- #footer -->
-
+	*/ ?>
 </div><!-- #wrapper .hfeed -->
 
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/node_modules/foundation-sites/vendor/jquery/dist/jquery.min.js"></script>

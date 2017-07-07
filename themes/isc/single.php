@@ -18,7 +18,7 @@
 <div class="post-wrapper">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-sm-9">
+			<div class="col-xs-12">
 
 	<div id="container">
 		<div id="content">
@@ -30,11 +30,13 @@
 			</div>
 			--> 
 
+			<?php if(is_array($image)) : ?>
 			<div class="post-head-image">
-				<img src="<?php echo $image[0]; ?>" class="img-responsive" alt="<?php the_title(); ?>" />
+				<img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>" />
 			</div>
+			<?php endif ?>
 
-			<div class="entry-meta">
+			<div class="entry-meta <?php if(!is_array($image)) : ?>no-header-image<?php endif ?>">
 
 				<?php printf( __( '<abbr class="published" title="%2$sT%3$s">%4$s at %5$s</abbr> | %6$s%7$s', 'sandbox' ),
 					'<span class="author vcard"><a class="url fn n" href="' . get_author_posts_url( $authordata->ID, $authordata->user_nicename ) . '" title="' . sprintf( __( 'View all posts by %s', 'sandbox' ), $authordata->display_name ) . '">' . get_the_author() . '</a></span>',
@@ -77,7 +79,9 @@
 
 			</div>
 
+			<?php if(is_array($image)) : ?>
 			<hr />
+			<?php endif ?>
 
 
  
@@ -91,8 +95,8 @@
 
 			
 			<div id="nav-below" class="navigation">
-				<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">&laquo;</span> %title' ) ?></div>
-				<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">&raquo;</span>' ) ?></div>
+				<div class="nav-previous"><?php previous_post_link( '%link', '<p><span class="meta-nav">&laquo;</span> %title</p>' ) ?></div>
+				<div class="nav-next"><?php next_post_link( '%link', '<p>%title <span class="meta-nav">&raquo;</span></p>' ) ?></div>
 			</div>
 			
 
@@ -102,7 +106,7 @@
 	</div><!-- #container -->
 
 			</div> <!-- .col -->
-			<div class="col-xs-12 col-sm-3">
+			<div class="col-xs-12">
 <?php get_sidebar() ?>
 			</div><!-- .col -->
 		</div> <!-- .row -->

@@ -219,7 +219,11 @@ margin:0;
 padding:0;
 }
 
-/* uglyfy this please */
+
+
+/*  
+ * Globals
+ */
 body {
   /*font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;*/
   background-color: #292929;
@@ -261,9 +265,14 @@ body {
 .section-content {
   padding-top: 25px;
 }
+.no-space {
+  margin: 0;
+  padding: 0;
+}
 
-
-/* HEADER */
+/*
+ * HEADER 
+ */
 #header .header-wrap-social {
   background-color: #fff;
   border-bottom: 1px solid #eee;
@@ -354,12 +363,11 @@ body {
     margin: 17px 20px;
     cursor: pointer;
 }
-
 #header .main-nav-toggle:focus {
   border-width: 0;
 }
-
-#header .main-nav ul li:hover ul {
+#header .main-nav ul li:hover > ul,
+#header .main-nav ul li ul li:hover > ul {
   visibility: visible;
   opacity: .98;
 }
@@ -391,6 +399,15 @@ body {
     padding: 13px 15px;
     margin: 0px;
 }
+#header .main-nav ul li ul li ul {
+  left: 0;
+  top: -2px;
+}
+#header .main-nav ul li ul li:hover ul {
+  margin-left: 100%;
+}
+
+
 
 /* Mobile Nav stuff */
 .hfeed {
@@ -473,6 +490,15 @@ body {
 
 
 /* FOOTER */
+#footer .footer-wraper .sub-main-nav {
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+#footer .footer-wraper .sub-main-nav a {
+  color: #fff;
+}
 #footer .footer-wraper {
   background-color: #292929;
   padding-top: 15px;
@@ -508,11 +534,32 @@ body {
 
 
 /* CONTENT */
+#content .head-liner-text {
+  font-size: 80px;
+  letter-spacing: 1px;
+  text-align: left;
+  color: #fff;
+  line-height: 1;
+}
+#content .head-liner-text a {
+  color: #fff;
+}
+#content .sub-head-liner-text {
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 300;
+  color: #fff;
+  text-align: left;
+  padding-top: 20px;
+}
+#content .sub-head-liner-text a {
+  color: #fff;
+}
 #content img {
   max-height: 900px;
 }
 #content a {
-  color: #881543;
+  color: #FB3448;
 }
 #content .header-slider .soliloquy-item {
   display: none; 
@@ -526,16 +573,62 @@ body {
 #content .space {
   height: 40px
 }
+#content .enterate {
+  text-align: center;
+  padding: 20px 0;
+  font-weight: 300;
+}
+#content .enterate h2 {
+  font-weight: 300;
+  font-size: 70px;
+  margin-bottom: 25px;
+}
+#content .enterate .subtitle {
+  padding: 20px 0;
+  background-color: #fff;
+}
+#content .enterate .col {
+  margin-bottom: 10px;
+}
+#content .enterate a {
+  color: #333;
+}
+#content .enterate .patrimonio {
+  background: url('assets/img/patrimonio.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+}
+#content .enterate .fondos {
+  background: url('assets/img/fondos.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+}
 #content .portfolio {
   text-align: center;
-  padding: 20px;
+  padding: 20px 0;
   font-weight: 300;
   font-size: 18px;
   letter-spacing: 1px;
 }
 #content .portfolio h2 {
+  /*
   font-weight: 400;
   text-transform: uppercase;
+  */
+  font-weight: 300;
+  font-size: 70px;
+  margin-bottom: 25px;
+}
+#content .subtitle {
+  font-size: 25px;
 }
 #content .portfolio .btn {
   background-color: #fff;
@@ -553,6 +646,330 @@ body {
   margin-top: 50px;
   margin-bottom: 25px;
 }
+#content .eventos {
+  text-align: center;
+  padding: 20px;
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+#content .eventos .crop{
+  height: 200px;
+  overflow: hidden;
+  background-color: #292929;
+}
+#content .eventos .crop .cell {
+  display: table-cell;
+  vertical-align: middle;
+  height: 200px;
+}
+#content .eventos .eventos-info {
+  text-align: left;
+}
+#content .cuadricula a {
+  text-decoration: none;
+}
+#content .cuadricula .cuadricula-container {
+  padding: 20% 0;
+  text-align: center;
+}
+#content .cuadricula .cuadricula-titulo{
+  color: #fff;
+  display: block;
+  font-size: 34px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+#content .cuadricula .literatura {
+  background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/literatura.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .formacion {
+  background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/formacion.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .visuales {
+  background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/visuales.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .cine {
+  background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/cine.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .escenicas {
+  background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/escenicas.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .musica {
+  background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/musica.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .faot {
+    background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/faot.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .felih {
+    background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('http://isc.gob.mx/devel/wp-content/uploads/2016/10/FELIH-Banner-Rosa.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .udpd {
+    background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/udpd.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .fk {
+    background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/fk.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .chmo {
+    background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/ch.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .met {
+    background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/met.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .flm {
+    background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('http://isc.gob.mx/devel/wp-content/uploads/2016/09/La-luna-no-es-de-queso...-es-de-Lupita-9.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cuadricula .fs {
+    background: linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/chmo.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+
+#content .festivales .cuadricula .cuadricula-container {
+  padding: 36% 0;
+}
+#content .festivales .cuadricula .cuadricula-titulo {
+  font-size: 22px;
+}
+#content .programas .soliloquy-container .soliloquy-caption {
+  height: 100%;
+  font-size: 5em;
+  text-shadow: transparent;
+  padding: 3% 0;
+}
+@media (min-width: 768px) {
+   #content .programas .soliloquy-container .soliloquy-caption {
+     padding: 4% 0;
+    }
+}
+@media (min-width: 992px) {
+   #content .programas .soliloquy-container .soliloquy-caption {
+     padding: 5% 0;
+    }
+}
+@media (min-width: 1200px) {
+   #content .programas .soliloquy-container .soliloquy-caption {
+     padding: 6% 0;
+    }
+}
+#content .convocatorias {
+  background: 
+    linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/convocatorias.jpg');
+  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  background-position: center;
+  background-attachment: fixed;
+
+  padding: 25% 0;
+  color: #fff;
+}
+#content .convocatorias a,
+#content .flickr a,
+#content .blogs a {
+  text-decoration: none;
+}
+#content .cultura-sonora {
+  background: url('http://isc.gob.mx/devel/wp-content/uploads/2017/03/BannerISCRADIO-01-2000x900_c.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .cultura-sonora a {
+  display: block;
+  padding: 24% 0;
+}
+#content .voluntariado {
+  background: url('http://isc.gob.mx/devel/wp-content/uploads/2016/09/VOLUNTARIADO-Logo-1024x353.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .voluntariado a {
+  display: block;
+  padding: 18% 0;
+}
+#content .flickr {
+  background: 
+    linear-gradient(
+      rgba(21,21,23,.65),
+      rgba(21,21,23,.65)
+    ),
+    url('assets/img/galeria.jpg');
+  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  background-position: center;
+  background-attachment: fixed;
+
+  padding: 25% 0;
+  color: #fff;
+}
+#content .flickr h1 {
+  font-weight: 400;
+  margin: 0;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+#content .flickr h1 a{
+  color: #fff;
+  text-decoration: none;
+}
 #content .products {
   text-align: center;
   padding: 20px;
@@ -564,23 +981,84 @@ body {
   margin-bottom: 25px;
 }
 #content .videos {
-  text-align: center;
   padding: 20px;
   padding-bottom: 40px;
   font-weight: 300;
   font-size: 18px;
   letter-spacing: 1px;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee;
+}
+#content .videos .videos-titulo {
+  text-align: center;
 }
 #content .videos h2 {
+  /*
   font-weight: 400;
   text-transform: uppercase;
+  */
+  font-weight: 300;
+  font-size: 70px;
+  margin-bottom: 25px;
 }
 #content .products h2 {
+  /*
   font-weight: 400;
   text-transform: uppercase;
+  */
+  font-weight: 300;
+  font-size: 70px;
+  margin-bottom: 25px;
+}
+#content .eventos h2 {
+  font-weight: 300;
+  font-size: 70px;
+  margin-bottom: 25px;
+}
+#content .ligas-interes {
+  text-align: center;
+  font-weight: 300;
+}
+#content .ligas-interes a {
+  color: #333;
+}
+#content .ligas-interes .liga {
+  padding: 25%;
+  height: 1px;
+}
+#content .ligas-interes .voluntariado {
+  background:
+    url('http://isc.gob.mx/devel/wp-content/uploads/2016/09/VOLUNTARIADO-Logo-300x104.png')
+  ;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#content .ligas-interes .gob-sonora {
+  background: 
+    url('http://www.sonora.gob.mx/images/logo-sonora-2015.png')
+  ;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#content .ligas-interes .sec {
+  background: 
+    url('assets/img/sec.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+#content .ligas-interes .secu {
+  background: 
+    url('http://www.gob.mx/cms/uploads/identity/image/4307/banner-cultura-firma.jpg')
+  ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
 }
 #content .products .crop {
   height: 200px;
@@ -775,17 +1253,99 @@ line-height: 1;
 .search-wrapper {
   margin: 60px 0 50px 0;
 }
-.post .post-head-image, .page .post-head-image {
+.block-post{
+  margin-bottom: 30px;
+}
+#content .block-post .entry-content a {
+  color: #fff;
+  font-weight: 500;
+}
+.block-post-red {
+  background-color:rgb(236,65,62); 
+}
+.block-post-green {
+  background-color:rgb(72,187,89); 
+}
+.block-post-orange {
+  background-color:rgb(245,157,55); 
+}
+.block-post-content {
+  padding: 15px;
+  height: 220px;
+}
+.read-more-category {
+  display: inline-block;
+  background: #fff;
+  padding: 10px 15px;
+  color: red;
+  font-size: 16px;
+}
+.read-more-red {
+  color:rgb(151,32,35) !important;
+}
+.read-more-green {
+  color:rgb(33,134,68) !important;
+}
+.read-more-orange {
+  color:rgb(242,115,47) !important;
+}
+.meta-list {
+  padding-left: 0;
+}
+ul.meta-list li {
+  list-style: none;
+}
+ul.meta-list li span {
+  font-weight: 700;
+}
+.read-more-wrapper {
+  padding: 15px;
+}
+.read-more-wrapper-cat {
+  padding: 15px;
+  text-align: right;
+}
+#content a.read-more-category {
+  color: #333;
+}
+.post .block-post-content .entry-title,
+.page .block-post-content .entry-title {
+  font-size: 17px;
+}
+
+.page .block-post-content .entry-title a,
+#content .post .block-post-content .entry-title a {
+  color: #fff;
+}
+#content .post .block-post-content .entry-title a:hover {
+  color: #fff;
+  text-decoration: underline;
+} 
+.page .block-post-content .entry-content,
+.post .block-post-content .entry-content {
+  color: #fff;
+  font-size: 15px;
+}
+
+
+.post .post-head-image, .page .post-head-image, {
   background-color: #121212;
   text-align: center;
-  max-height: 600px;
+  max-height: 291px;
   overflow: hidden;
 }
 .post .post-head-image img, .page .post-head-image img {
   margin: auto;
 }
 .category.post-head-image {
-  margin-bottom: 30px;
+  background-size: cover;
+  height: 230px;
+  background-position: center;
+}
+.post-head-image a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .post .wp-caption, .page .wp-caption {
   max-width: 100% !important;
@@ -801,24 +1361,31 @@ line-height: 1;
 }
 .entry-title-wrapper {
   /*background-color: #292929;*/
-  background-color: #881543;
+  background-color: #f8f8f8;
   opacity: 0.9;
 }
 .entry-title-wrapper .entry-title, .entry-title-wrapper .page-title {
-  color: #fff;
   opacity: 1;
   font-weight: 300;
-  font-size: 30px;
+  font-size: 70px;
+  color: #333;
   padding: 30px 0 30px 0;
   margin: 0;
   letter-spacing: 1px;
 }
-.post .entry-title {
+.post .entry-title,
+.page .entry-title {
     margin: 0;
     padding: 0;
     font-size: 28px;
-    font-weight: 100;
+    font-weight: 400;
     margin-bottom: 20px;
+}
+.page .entry-title {
+  margin-bottom: 0px;
+}
+.page .block-post-content .entry-title {
+  margin-bottom: 20px;
 }
 .serch-title{
   margin-top: 0;
@@ -833,10 +1400,10 @@ line-height: 1;
 }
 .page-header-title .breadcrumbs {
   font-size: 14px;
-  color: rgba(240,245,250,.6);
+  color: #333;
 }
 .page-header-title .breadcrumbs span a {
-  color: rgba(240,245,250,.6);
+  color: #333;
 }
 .page-header-title .breadcrumbs > span {
   display: inline-block;
@@ -845,8 +1412,9 @@ line-height: 1;
 }
 .page-header-title .breadcrumbs > span:last-child {
   display: block;
-  font-size: 30px;
-  color: #fff;
+  font-weight: 300;
+  font-size: 70px;
+  color: #333;
 }
 #content .post .entry-title a, #content .page .entry-title a {
   color: #121212;
@@ -858,11 +1426,13 @@ line-height: 1;
 .post .entry-content, .page .entry-content {
   font-weight: 300;
   font-size: 18px;
+  letter-spacing: 1px;
 }
-.entry-content img {
-  display: block;
+#content .entry-content img {
+  /*display: block;*/
   max-width: 100%;
   height: auto;
+  max-height: 100%;
 }
 .post .entry-content p, 
 .page .entry-content p,
@@ -882,10 +1452,17 @@ line-height: 1;
   letter-spacing: 1px;
   font-weight: 300;
 }
+.entry-meta.no-header-image{
+  margin-bottom: 20px;
+}
+abbr[title] {
+  border-bottom-width: 0;
+}
 
 .navigation {
   font-size: 18px;
   font-weight: 300;
+  clear: both;
 }
 #s-no-results {
     height: 36px;
@@ -980,7 +1557,7 @@ div.sidebar label {
 }
 .widget_search form div input[type=text]{
     height: 36px;
-    color: #aaa;
+    color: #6a6a6a;
     outline: none !important;
     padding: 5px 5px 5px 0;
     margin: 0 10px 10px 0;
@@ -1018,3 +1595,6 @@ div.sidebar label {
   background-color: #881543;
   text-decoration: none;
 } 
+.anuncios {
+  text-align: center;
+}
