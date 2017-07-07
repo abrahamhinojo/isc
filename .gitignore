@@ -1,1 +1,4 @@
 /uploads/*
+/plugins/*
+/themes/isc_v1
+/themes/isc/.sass-cache

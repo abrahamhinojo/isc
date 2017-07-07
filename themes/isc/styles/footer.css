@@ -1,0 +1,83 @@
+/*
+ * Gob Footer
+ */
+.gob-footer-top {
+  background-color: #fff; }
+  .gob-footer-top-nav {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    height: 40px; }
+    .gob-footer-top-nav ul {
+      margin: 0;
+      padding-left: 0; }
+    .gob-footer-top-nav li {
+      list-style: none;
+      display: inline-block;
+      color: #6a6a6a; }
+    .gob-footer-top-nav nav {
+      padding: 9px 0; }
+      .gob-footer-top-nav nav .menu-item:last-child a {
+        border-right: none; }
+      .gob-footer-top-nav nav a {
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        color: #6a6a6a;
+        display: block;
+        padding: 0px 10px;
+        font-size: 12px; }
+        .gob-footer-top-nav nav a:hover {
+          color: #333;
+          text-decoration: none; }
+.gob-footer-mid {
+  padding-top: 15px; }
+  .gob-footer-mid ul {
+    margin: 0;
+    padding-left: 0; }
+  .gob-footer-mid li {
+    list-style: none;
+    color: #6a6a6a;
+    margin-bottom: 8px; }
+  .gob-footer-mid a {
+    text-decoration: none; }
+  .gob-footer-mid h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #4e4d4d; }
+  .gob-footer-mid .secciones {
+    font-size: 12px; }
+    .gob-footer-mid .secciones a {
+      color: #6a6a6a; }
+      .gob-footer-mid .secciones a:hover {
+        color: #ef3f37;
+        text-decoration: none; }
+      .gob-footer-mid .secciones a:before {
+        font-family: FontAwesome;
+        content: "\f054";
+        margin-right: 8px; }
+  .gob-footer-mid .transparencia li {
+    margin-bottom: 15px;
+    border-radius: 2px; }
+  .gob-footer-mid .transparencia .portal {
+    display: block;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 16px 0;
+    color: #fff;
+    background-color: #fb3448;
+    border-color: #fa162d;
+    line-height: 1.33;
+    text-align: center; }
+    .gob-footer-mid .transparencia .portal:hover {
+      text-decoration: none; }
+.gob-footer-bottom {
+  background-color: #f5f5f5;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  text-align: center;
+  color: #6a6a6a;
+  font-size: 12px; }
+  .gob-footer-bottom a {
+    font-weight: bold;
+    color: #6a6a6a; }
+
+/*# sourceMappingURL=footer.css.map */

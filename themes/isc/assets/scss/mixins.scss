@@ -1,0 +1,26 @@
+$border: 1px solid rgba(0, 0, 0, 0.1);
+$back-border: rgba(0, 0, 0, 0.15);
+$black-color: #333;
+$dark-color: #4e4d4d;
+$light-color: #6a6a6a;
+$gray-back: #f8f8f8;
+$light-red: #ef3f37;
+$dark-red: rgb(151,32,35);
+
+@mixin transitions() {
+    -webkit-transition: all ease 0.3s ;
+    -moz-transition: all ease 0.3s ;
+    -ms-transition: all ease 0.3s ;
+    -o-transition: all ease 0.3s ;
+    transition: all ease 0.3s ;
+}
+
+@mixin social() {
+    &.issuu { background-color: #f26f61; }
+    &.fb { background-color: #3b5998; }
+    &.twitter { background-color: #1da1f2; }
+    &.instagram { background-color:  #262626; }
+    &.youtube { background-color: #e62117; }
+    &.flickr { background-color: #2b2b2e; }
+    &.periscope { background-color: #40a4c4; }
+}

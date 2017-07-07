@@ -1,0 +1,31 @@
+.social-icons {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0; }
+  .social-icons .fa {
+    font-size: 14px; }
+  .social-icons li {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center; }
+  .social-icons a {
+    color: #6a6a6a;
+    display: block;
+    padding: 12px 0;
+    width: 36px; }
+    .social-icons a:hover {
+      color: #fff; }
+      .social-icons a:hover.issuu {
+        background-color: #f26f61; }
+      .social-icons a:hover.fb {
+        background-color: #3b5998; }
+      .social-icons a:hover.twitter {
+        background-color: #1da1f2; }
+      .social-icons a:hover.instagram {
+        background-color: #262626; }
+      .social-icons a:hover.youtube {
+        background-color: #e62117; }
+      .social-icons a:hover.flickr {
+        background-color: #2b2b2e; }
+      .social-icons a:hover.periscope {
+        background-color: #40a4c4; }
+
+/*# sourceMappingURL=globals.css.map */

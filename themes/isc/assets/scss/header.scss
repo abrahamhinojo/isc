@@ -1,0 +1,170 @@
+/*
+ * Gob Header
+ */
+
+@import 'mixins';
+
+ .gob-header{
+    ul {
+        margin: 0;
+        padding-left: 0;
+    }
+
+    li {
+        list-style: none;
+        display: inline-block;
+        color: $light-color;
+    }
+
+    &-wrap-social {
+        height: 39px;
+        background-color: $gray-back;
+        border-bottom: $border;
+
+        li {
+            font-size: 12px;
+        }
+
+        &-main-info {
+            padding: 9px 0;
+
+            li {
+                margin-right: 12px;
+            }
+
+            h1 {
+                color: $dark-color;
+                font-weight: 700;
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+
+    &-logo-nav {
+        height: 90px;
+
+        li {
+            vertical-align: top;
+        }
+
+        &-img {
+            padding: 10px 0;
+            img {
+                height: 70px;
+            }
+
+            &-isc {
+                padding: 15px 0;
+
+                img {
+                    height: 60px;
+                }
+            }
+        }
+
+        &-separador {
+            padding: 23px 12px;
+
+            span {
+                display: block;
+                background-color: $light-red;
+                width: 4px;
+                height: 45px;
+            }
+        }
+
+        &-nav {
+            nav {
+                font-size: 14px;
+                padding: 25px 0;
+
+                a {
+                    color: $dark-color;
+
+                    &:hover {
+                        color: $light-red;
+                        text-decoration: none;
+                    }
+                }
+
+                .menu {
+                    height: 40px;
+
+                    .menu-item {
+                        a {
+                            display: block;
+                            padding: 10px 10px;
+                        }
+
+                        &:hover {
+                            & > .sub-menu {
+                                visibility: visible;
+                                opacity: .98;
+                            }
+                        }
+
+                        .sub-menu {
+                            .menu-item {
+                                .sub-menu {
+                                    left: 100%;
+                                    top: -3px;
+                                }
+                            }
+                        }
+                    }
+
+                    .sub-menu {
+                        @include transitions();
+                        visibility: hidden;
+                        display: block;
+                        opacity: 0;
+                        background-color: $gray-back;
+                        border-top: 3px solid $light-red;
+                        box-shadow: 0 3px 6px $back-border;
+                        margin-top: 0;
+                        padding: 10px;
+                        position: absolute;
+                        z-index: 1;   
+
+                        a {
+                            width: 180px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-search {
+        position: absolute;
+        right: 14px;
+        top: 31px;
+        font-size: 16px;
+        color: $light-color;
+
+        .fa {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        input {
+            @include transitions();
+            width: 26px;
+            padding-right: 25px;
+            padding-left: 10px;
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            right: 0;
+            z-index: 3;
+            cursor: pointer;
+
+            &:focus {
+                width: 150px;
+                border: $border
+            }
+        }
+    }
+ } 

@@ -1,0 +1,25 @@
+/*
+ * Index
+ */
+
+@import 'mixins';
+
+#content {
+    .seccion {
+        text-align: center;
+        font-weight: 300;
+
+        h2 {
+            font-weight: 300;
+            font-size: 70px;
+            margin-bottom: 25px;
+        }
+    }
+    .blogs {
+        padding: 20px 0;
+        
+        img {
+            width: 225px;
+        }
+    }
+}

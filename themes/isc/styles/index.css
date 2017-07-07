@@ -1,0 +1,16 @@
+/*
+ * Index
+ */
+#content .seccion {
+  text-align: center;
+  font-weight: 300; }
+  #content .seccion h2 {
+    font-weight: 300;
+    font-size: 70px;
+    margin-bottom: 25px; }
+#content .blogs {
+  padding: 20px 0; }
+  #content .blogs img {
+    width: 225px; }
+
+/*# sourceMappingURL=index.css.map */

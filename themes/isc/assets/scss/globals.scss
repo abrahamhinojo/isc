@@ -1,0 +1,28 @@
+
+@import 'mixins';
+
+.social-icons {
+    border-right: $border;
+    font-size: 0;
+
+    .fa {
+        font-size: 14px;
+    }
+
+    li {
+        border-left: $border;
+        text-align: center;
+    }
+
+    a {
+        color: $light-color;
+        display: block;
+            padding: 12px 0;
+            width: 36px;
+
+            &:hover {
+            color: #fff;
+            @include social();
+            }
+    }
+}
